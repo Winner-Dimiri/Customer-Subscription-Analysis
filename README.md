@@ -50,9 +50,9 @@
 	| Region               | Geographical location of each customer                                   | 
 	| SubscriptionType     | Type of subscription a customer enrolled                                 |
 	| SubscriptionStart    | The date when a customer’s subscription began                            |
-  | SubscriptionEnd      | The date when a customer’s subscription ended                            |
+ 	| SubscriptionEnd      | The date when a customer’s subscription ended                            |
 	| Canceled             | Indicates whether the subscription was canceled                          |
-  | Revenue              | Total revenue generated from a customer during their subscription period |
+  	| Revenue              | Total revenue generated from a customer during their subscription period |
 
 The subscription categories include Basic, Standard, Premium while the regions are East, West, North, and South.
 
@@ -67,7 +67,15 @@ The subscription categories include Basic, Standard, Premium while the regions a
 ### Data Cleaning and Preparation
 During the data cleaning and preparation phase, I carried out the following actions:
 - **Data loading and inspection:** loaded the dataset and inspected its structure for inconsistencies.
-- **Handling Currency:** while inspecting the data, I noticed that the dataset did not specify the currency of the Unit Prices. To avoid confusion and ensure clarity, I renamed the `UnitPrice` column to `UnitPrice_NGN` to reflect that the values are in Nigerian Naira (₦). This is to provide clearer insight into the monetary context and prevent potential misinterpretation of financial data. [Click here to view the SQL query](https://github.com/Winner360/My_first_project/blob/main/Analysis1.sql#L3-L5)
+- **Handling Currency:** I renamed the `Revenue` column to `Revenue_NGN` to reflect that the values are in Naira (₦), in order to provide clearer insight and prevent potential misinterpretation of financial data. [Click here to view the SQL query](https://github.com/Winner360/My_first_project/blob/main/Analysis1.sql#L3-L5)
 - **Handling missing values:** checked for missing values. I noticed that the dataset provided for this capstone project included sales data across two years (2023 and 2024). However, 2024 only contained data for 8 months (January to August), while 2023 had full-year data. To ensure a fair year-over-year comparison and avoid bias due to unequal time periods, I filtered the 2023 data to include only January to August. This allowed me to accurately analyze trends and performance across consistent timeframes. While part of this analysis considers the complete sales data for 2023, the primary focus is on the corresponding January–August timeframe to ensure a fair comparison with the available 2024 data. [Click here to view the SQL query](https://github.com/Winner360/My_first_project/blob/main/Analysis1.sql#L7-L12)
 - **Data Type Conversion:** Converted the data types of Quantity and UnitPrice from SMALLINT to INT to accommodate larger values in the Revenue column. [Click here to view the SQL query](https://github.com/Winner360/My_first_project/blob/main/Analysis1.sql#L16-L21)
 - **Column Creation:** for a more efficient and insightful analysis, I introduced additional derived columns, including:
+  1.
+  2.
+
+### Exploratory Data Analysis
+- **Descriptive Analysis:** To get the initial insight from the data by calculating: Total customers, total revenue, total active vs. churned customers, Average subscription duration,
+Cancellation counts by region and subscription type. The SQL Results are shown below.
+
+- **Segmentation Analysis:** This section comprises of a dive into finding how 
