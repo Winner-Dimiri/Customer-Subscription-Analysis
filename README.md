@@ -1,4 +1,4 @@
-# Customer Subscription Analysis
+# Customer Behaviour Analysis
 ---
 
 ## Contents
@@ -21,7 +21,7 @@
 
 ### Project Overview 
 
-- **Project Title:** Sales Performance Analysis For Business Optimization.
+- **Project Title:** E-Commerce Customer Behaviour Analysis.
 
 - **Project Description:** This project focuses on leveraging customer subscription data to uncover actionable insights into customer behavior, subscription lifecycles, and revenue performance. The analysis aims to highlight key customer segments, cancellation patterns, and revenue drivers. The final deliverable is a Power BI dashboard with insights that enable stakeholders to monitor subscription trends, understand churn behavior, and make data-driven decisions to improve customer retention and revenue growth.
 
@@ -63,4 +63,19 @@ The subscription categories include Basic, Standard, Premium while the regions a
 - **Microsoft Excel:** for data cleaning, formatting, and preliminary analysis
 - **Structured Query Language (SQL):** for data querying and exploration
 - **Power BI:** for data visualization and dashboard creation.
+
+**Business Questions**
+- Who are our top customers?
+- What categories or channels drive the highest revenue?
+- How do demographics influence purchase behaviour?
+- How does discount usage affect loyalty and returns?
+- Which segments should marketing target for retention or upsell?
+
+### Data Preparation
+The dataset provides each customer’s average Purchase_Amount and Frequency_of_Purchase (monthly).To calculate total spending per customer, derived metrics, Monthly_Revenue and AnnualRevenue were created:
+Monthly_Revenue = Purchase_Amount × Frequency_of_Purchase
+Annual_Revenue = Monthly_Revenue × 12
+
+
+**RFM Adaptation:** The dataset represents one record per customer rather than transaction-level data. Therefore, a traditional RFM (Recency, Frequency, Monetary) model could not be directly applied. To derive similar insights, I implemented an Engagement-Weighted RFM approach, where “Recency” was redefined as engagement recency using ad interaction levels i.e the Engagement_with_Ad column, “Frequency” used the customer’s reported purchase frequency, and “Monetary” reflected their annual revenue. This adaptation is to preserve the RFM analysis while aligning with the dataset’s structure. This approximation allows meaningful revenue-based analyses, such as identifying high-value customers and top-performing product categories.
 
