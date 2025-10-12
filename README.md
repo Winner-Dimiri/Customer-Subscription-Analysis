@@ -79,3 +79,6 @@ Annual_Revenue = Monthly_Revenue × 12
 
 **RFM Adaptation:** The dataset represents one record per customer rather than transaction-level data. Therefore, a traditional RFM (Recency, Frequency, Monetary) model could not be directly applied. To derive similar insights, I implemented an Engagement-Weighted RFM approach, where “Recency” was redefined as engagement recency using ad interaction levels i.e the Engagement_with_Ad column, “Frequency” used the customer’s reported purchase frequency, and “Monetary” reflected their annual revenue. This adaptation is to preserve the RFM analysis while aligning with the dataset’s structure. This approximation allows meaningful revenue-based analyses, such as identifying high-value customers and top-performing product categories.
 
+**Return Behavior:** The original ReturnRate column contained limited variation (0, 1, 2), representing how often customers returned purchases rather than a true percentage. To make the feature analytically meaningful, I categorized it into behavioral segments: No Returns, Occasional Returns, and Frequent Returns in order to evaluate how return behavior correlates with loyalty, satisfaction, and spending.
+
+**Loyalty_Score:** Customer loyalty is a multi-dimensional construct, so I created a composite score combining several behavioral indicators.
