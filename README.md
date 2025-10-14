@@ -75,28 +75,36 @@
   1. **Monthly and Annual Revenue:** The dataset provides each customer’s average Purchase_Amount and Frequency_of_Purchase (monthly).To calculate total spending per customer, derived metrics, Monthly_Revenue and AnnualRevenue were created:
 Monthly_Revenue = Purchase_Amount × Frequency_of_Purchase
 Annual_Revenue = Monthly_Revenue × 12
-[You can view the SQL query here](https://github.com/Winner-Dimiri/E-commerce-Customer-Behaviour-Analysis-Power-BI-SQL-Excel/blob/main/E-commerceCustomerAnalysis.sql#L1-L13)
+
+     [You can view the SQL query here](https://github.com/Winner-Dimiri/E-commerce-Customer-Behaviour-Analysis-Power-BI-SQL-Excel/blob/main/E-commerceCustomerAnalysis.sql#L1-L13)
 
   2. **Purchase_Month:** extracted month from purchase date to visualize seasonal sales trends and monthly revenue changes.
+
      [View the SQL query here](https://github.com/Winner-Dimiri/E-commerce-Customer-Behaviour-Analysis-Power-BI-SQL-Excel/blob/main/E-commerceCustomerAnalysis.sql#L16-L21)
 
   3. **Age_Group:**	categorized customers into defined age ranges (<25, 25-34, 35-33, >44) for demographic-based insights.
+	 
 	 [View the SQL query here](https://github.com/Winner-Dimiri/E-commerce-Customer-Behaviour-Analysis-Power-BI-SQL-Excel/blob/main/E-commerceCustomerAnalysis.sql#L24-L34)
 
   4. **RFM_Score:** the dataset represents one record per customer rather than transaction-level data. Therefore, a traditional RFM (Recency, Frequency, Monetary) model could not be directly applied. To derive similar insights, I implemented an Engagement-Weighted RFM approach, where “Recency” was redefined as engagement recency using ad interaction levels, that is the Engagement_with_Ad column, “Frequency” used the customer’s reported purchase frequency, and annual revenue for “Monetary”. This adaptation is to preserve the RFM analysis while aligning with the dataset’s structure. This approximation allows meaningful revenue-based analyses, such as identifying high-value customers and top-performing product categories.
+	  
 	  [You can view the SQL query here](https://github.com/Winner-Dimiri/E-commerce-Customer-Behaviour-Analysis-Power-BI-SQL-Excel/blob/main/E-commerceCustomerAnalysis.sql#L37-L84)
 
   5. **Customer_Segment:** grouped customers by RFM Score into three segments: Gold, Silver, and Bronze.
+	  
 	  [View the SQL query here](https://github.com/Winner-Dimiri/E-commerce-Customer-Behaviour-Analysis-Power-BI-SQL-Excel/blob/main/E-commerceCustomerAnalysis.sql#L87-L97)
 
   6. **Return_Behavior:** the original Return_Rate column contained limited variation (0, 1, 2), representing how often customers returned purchases rather than a true percentage. To make the feature analytically meaningful, I categorized it into behavioral segments: No Returns, Occasional Returns, and Frequent Returns in order to evaluate how return behavior correlates with loyalty, satisfaction, and spending.
+	  
 	  [View the SQL query here](https://github.com/Winner-Dimiri/E-commerce-Customer-Behaviour-Analysis-Power-BI-SQL-Excel/blob/main/E-commerceCustomerAnalysis.sql#L100-L110)
 
   7. **Loyalty_Score:** this is a multi-dimensional construct. I created a composite score combining three behavioral indicators: brand loyalty, customer satisfaction, and Engagement with Ads.
+	  
 	  [View the SQL query here](https://github.com/Winner-Dimiri/E-commerce-Customer-Behaviour-Analysis-Power-BI-SQL-Excel/blob/main/E-commerceCustomerAnalysis.sql#L112-L123)
 
   8. **Time_to_Decision_Bucket:** grouped customers based on the time taken between viewing and purchasing, to analyze decision speed patterns.
- 	   [View the SQL query here](https://github.com/Winner-Dimiri/E-commerce-Customer-Behaviour-Analysis-Power-BI-SQL-Excel/blob/main/E-commerceCustomerAnalysis.sql#L126-L135)
+
+      [View the SQL query here](https://github.com/Winner-Dimiri/E-commerce-Customer-Behaviour-Analysis-Power-BI-SQL-Excel/blob/main/E-commerceCustomerAnalysis.sql#L126-L135)
 
 ### Visualizations
 Below are the dashboards visualizing the analyses 
