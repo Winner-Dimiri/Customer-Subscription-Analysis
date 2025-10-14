@@ -9,7 +9,7 @@
 
 [Tools Used](#tools-used)
 
-[Data Preparation](#data-preparation)
+[Data Cleaning and Preparation](#data-preparation)
 
 [Visualizations](#visualizations)
 
@@ -70,7 +70,9 @@
 - **Structured Query Language (SQL):** for data querying and exploration
 - **Power BI:** for data visualization and dashboard creation.
 
-### Data Preparation
+### Data Cleaning and Preparation
+- Aggregated and cleaned missing and inconsistent values for better accuracy.
+
 - **Derived Columns:**
   1. **Monthly and Annual Revenue:** The dataset provides each customer’s average Purchase_Amount and Frequency_of_Purchase (monthly).To calculate total spending per customer, derived metrics, Monthly_Revenue and AnnualRevenue were created:
 Monthly_Revenue = Purchase_Amount × Frequency_of_Purchase
