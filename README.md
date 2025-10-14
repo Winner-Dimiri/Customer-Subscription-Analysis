@@ -82,42 +82,7 @@ Monthly_Revenue = Purchase_Amount × Frequency_of_Purchase
 Annual_Revenue = Monthly_Revenue × 12
 [You can view the SQL query here]()
 
-2. AgeGroup: the customers were grouped into four age groups: <25, 25-34, 35-44, >44, for ease of analysis and proper segmentation.
-   [View the SQL query here]()
 
-IncomeBucket (map Income_Level to buckets or numeric ranking)
-
-Example mapping: Low=1, Middle=2, High=3 (use to segment spending power)
-
-RFM components & scores
-
-RecencyDays — CURRENT_DATE - Time_of_Purchase (or if Time_of_Purchase is last purchase)
-
-FrequencyMetric — use Frequency_of_Purchase (monthly)
-
-Monetary — MonthlyRevenue or AnnualRevenue
-
-Convert each to a 1–5 score (quintiles) and combine to RFM_Score.
-
-CLV_estimate (simple)
-
-CLV = MonthlyRevenue * avg_customer_lifetime_months * gross_margin
-
-Example: CLV = MonthlyRevenue * 24 * 0.30 (document the lifetime and margin assumptions)
-
-LoyaltyScore (composite)
-
-Weighted sum: 0.4*Brand_Loyalty + 0.3*(Customer_Loyalty_Program_Member?1:0) + 0.3*(Engagement_with_Ads_score)
-
-Normalize to 0–100.
-
-ReturnFlagHigh (boolean)
-
-ReturnFlagHigh = RETURN_RATE > 0.15 (thresholds are business-defined)
-
-TimeToDecisionBucket
-
-bucket time to decision into Fast/Moderate/Slow.
 
 
 
