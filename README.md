@@ -1,4 +1,4 @@
-# Customer Behaviour Analysis
+# E-Commerce Customer Behaviour Analysis
 ---
 
 ## Contents
@@ -9,25 +9,19 @@
 
 [Tools Used](#tools-used)
 
-[Data Cleaning and Preparation](#data-cleaning-and-preparation)
-
-[Exploratory Data Analysis](#exploratory-data-analysis)
+[Data Preparation](#data-preparation)
 
 [Visualizations](#visualizations)
 
-[Insights](#insights)
+[Key Insights](#key-insights)
 
-[Recommendations](#recommendations)
+[Strategic Recommendations](#strategic-recommendations)
 
 ### Project Overview 
 
 - **Project Title:** E-Commerce Customer Behaviour Analysis.
 
-- **Project Description:** This project focuses on transforming raw e-commerce customer data into actionable insights using Power BI, SQL, and Excel. The goal was to analyze customer purchasing behavior, loyalty, and satisfaction to uncover trends that drive sales growth, customer retention, and marketing optimization.
-
-Using interactive visualizations and data modeling techniques, the project segments customers based on purchase frequency and spending patterns. It identifies the factors influencing buying decisions such as discount sensitivity, social media influence, and engagement with ads, to help businesses make data-driven decisions.
-
-The result is a dynamic Power BI dashboard that provides a complete view of customer behavior, enabling stakeholders to improve targeting, personalize campaigns, and enhance customer lifetime value.
+- **Project Description:** This project focuses on transforming raw e-commerce customer data into actionable insights using Power BI, SQL, and Excel. The goal is to analyze customer demographics, purchasing behavior, loyalty, and satisfaction to uncover trends that drive sales growth, customer retention, and marketing optimization. The project segments customers based on demographics, purchase frequency and spending patterns. It identifies the factors influencing buying decisions such as discount sensitivity, social media influence, and engagement with ads, to help businesses make data-driven decisions. The result is a dynamic Power BI dashboard that provides a complete view of customer behavior, enabling stakeholders to improve targeting, personalize campaigns, and enhance customer lifetime value.
 
 - **Business Task:** To analyze customer behavior patterns and identify opportunities to:
   1. Increase customer retention and loyalty program participation.
@@ -35,7 +29,7 @@ The result is a dynamic Power BI dashboard that provides a complete view of cust
   3. Improve sales forecasting and campaign targeting.
   4. Understand key drivers of purchase intent, discount sensitivity, and customer satisfaction.
 
-- **Objectives:** The objectives of this project are:
+- **Objectives:** The objectives of this project include:
   1. Quantify revenue drivers: which categories, devices and channels produce the most revenue.
   2. Identify high-value customers and recommend retention/upsell strategies.
   3. Segment customers by behaviour.
@@ -43,11 +37,11 @@ The result is a dynamic Power BI dashboard that provides a complete view of cust
   5. Identify friction areas: high return rates, long time-to-decision, low satisfaction.
   6. Provide prioritized, data-driven recommendations for marketing and product teams.
 
-**Business Questions**
+- **Business Questions**
   1. What customer demographics and behavioral patterns drive the highest sales and loyalty?
   2. How do purchase frequency, product category, and purchase channel influence total revenue?
   3. What impact do discounts, social media, and ad engagement have on customer spending and retention?
-  4. How do product ratings, return rates, and satisfaction levels affect repeat purchases?
+  4. How do return rates and satisfaction levels affect repeat purchases?
   5. Which customer segments and marketing strategies offer the greatest potential for business growth?
 
 	
@@ -77,18 +71,70 @@ The result is a dynamic Power BI dashboard that provides a complete view of cust
 - **Power BI:** for data visualization and dashboard creation.
 
 ### Data Preparation
-1. The dataset provides each customer’s average Purchase_Amount and Frequency_of_Purchase (monthly).To calculate total spending per customer, derived metrics, Monthly_Revenue and AnnualRevenue were created:
+- **Derived Columns:**
+  1. **Monthly and Annual Revenue:** The dataset provides each customer’s average Purchase_Amount and Frequency_of_Purchase (monthly).To calculate total spending per customer, derived metrics, Monthly_Revenue and AnnualRevenue were created:
 Monthly_Revenue = Purchase_Amount × Frequency_of_Purchase
 Annual_Revenue = Monthly_Revenue × 12
-[You can view the SQL query here]()
+[You can view the SQL query here](https://github.com/Winner-Dimiri/E-commerce-Customer-Behaviour-Analysis-Power-BI-SQL-Excel/blob/main/E-commerceCustomerAnalysis.sql#L1-L13)
 
+  2. **Purchase_Month:** extracted month from purchase date to visualize seasonal sales trends and monthly revenue changes.
+     [View the SQL query here](https://github.com/Winner-Dimiri/E-commerce-Customer-Behaviour-Analysis-Power-BI-SQL-Excel/blob/main/E-commerceCustomerAnalysis.sql#L16-L21)
 
+  3. **Age_Group:**	categorized customers into defined age ranges (<25, 25-34, 35-33, >44) for demographic-based insights.
+	 [View the SQL query here](https://github.com/Winner-Dimiri/E-commerce-Customer-Behaviour-Analysis-Power-BI-SQL-Excel/blob/main/E-commerceCustomerAnalysis.sql#L24-L34)
 
+  4. **RFM_Score:** the dataset represents one record per customer rather than transaction-level data. Therefore, a traditional RFM (Recency, Frequency, Monetary) model could not be directly applied. To derive similar insights, I implemented an Engagement-Weighted RFM approach, where “Recency” was redefined as engagement recency using ad interaction levels, that is the Engagement_with_Ad column, “Frequency” used the customer’s reported purchase frequency, and annual revenue for “Monetary”. This adaptation is to preserve the RFM analysis while aligning with the dataset’s structure. This approximation allows meaningful revenue-based analyses, such as identifying high-value customers and top-performing product categories.
+	  [You can view the SQL query here](https://github.com/Winner-Dimiri/E-commerce-Customer-Behaviour-Analysis-Power-BI-SQL-Excel/blob/main/E-commerceCustomerAnalysis.sql#L37-L84)
 
+  5. **Customer_Segment:** grouped customers by RFM Score into three segments: Gold, Silver, and Bronze.
+	  [View the SQL query here](https://github.com/Winner-Dimiri/E-commerce-Customer-Behaviour-Analysis-Power-BI-SQL-Excel/blob/main/E-commerceCustomerAnalysis.sql#L87-L97)
 
+  6. **Return_Behavior:** the original Return_Rate column contained limited variation (0, 1, 2), representing how often customers returned purchases rather than a true percentage. To make the feature analytically meaningful, I categorized it into behavioral segments: No Returns, Occasional Returns, and Frequent Returns in order to evaluate how return behavior correlates with loyalty, satisfaction, and spending.
+	  [View the SQL query here](https://github.com/Winner-Dimiri/E-commerce-Customer-Behaviour-Analysis-Power-BI-SQL-Excel/blob/main/E-commerceCustomerAnalysis.sql#L100-L110)
 
-**RFM Adaptation:** The dataset represents one record per customer rather than transaction-level data. Therefore, a traditional RFM (Recency, Frequency, Monetary) model could not be directly applied. To derive similar insights, I implemented an Engagement-Weighted RFM approach, where “Recency” was redefined as engagement recency using ad interaction levels i.e the Engagement_with_Ad column, “Frequency” used the customer’s reported purchase frequency, and “Monetary” reflected their annual revenue. This adaptation is to preserve the RFM analysis while aligning with the dataset’s structure. This approximation allows meaningful revenue-based analyses, such as identifying high-value customers and top-performing product categories.
+  7. **Loyalty_Score:** this is a multi-dimensional construct. I created a composite score combining three behavioral indicators: brand loyalty, customer satisfaction, and Engagement with Ads.
+	  [View the SQL query here](https://github.com/Winner-Dimiri/E-commerce-Customer-Behaviour-Analysis-Power-BI-SQL-Excel/blob/main/E-commerceCustomerAnalysis.sql#L112-L123)
 
-**Return Behavior:** The original ReturnRate column contained limited variation (0, 1, 2), representing how often customers returned purchases rather than a true percentage. To make the feature analytically meaningful, I categorized it into behavioral segments: No Returns, Occasional Returns, and Frequent Returns in order to evaluate how return behavior correlates with loyalty, satisfaction, and spending.
+  8. **Time_to_Decision_Bucket:** grouped customers based on the time taken between viewing and purchasing, to analyze decision speed patterns.
+ 	   [View the SQL query here](https://github.com/Winner-Dimiri/E-commerce-Customer-Behaviour-Analysis-Power-BI-SQL-Excel/blob/main/E-commerceCustomerAnalysis.sql#L126-L135)
 
-**Loyalty_Score:** Customer loyalty is a multi-dimensional construct, so I created a composite score combining several behavioral indicators.
+### Visualizations
+Below are the dashboards visualizing the analyses 
+
+![Revenue Insights](https://github.com/Winner-Dimiri/E-commerce-Customer-Behaviour-Analysis-Power-BI-SQL-Excel/blob/main/E-commerce%20Revenue%20Insights%20Trends.png)
+
+![Customer Behavior Analysis](https://github.com/Winner-Dimiri/E-commerce-Customer-Behaviour-Analysis-Power-BI-SQL-Excel/blob/main/Customer%20Insights%20and%20Behaviour%20Analysis.png)
+  
+### Key Insights
+
+- **Demographics and Revenue Drivers:** Customers aged 25–44 and those with middle to high income levels contribute over 60% of total revenue, showing that mid-career professionals are the most profitable demographic group.
+
+- **Behavioral Patterns:** Customers with slow decision speeds generated the highest revenue. This suggests that more time spent on researching leads to higher purchase values. Those with moderate decision speeds also show strong buying intent.
+
+- **Purchase Channel and Device Trends:** Online and mixed channels account for the largest revenue share, and desktop users spend slightly more than smaertphone and tablet shoppers, highlighting the importance of optimizing desktop experiences for high-value transactions.
+
+- **Discount Sensitivity and Influence Factors:** Revenue is nearly evenly split between customers who used discounts and those who didn’t, but “somewhat sensitive” buyers yield higher average spend, suggesting they respond well to balanced promotional strategies. Additionally, high and low social media influence groups surprisingly generate higher revenue, implying that both strong brand presence and organic engagement matter.
+
+- **Product and Category Insights:** Toys & Games and Packages drive the highest revenue, while Jewelry & Electronics have higher return rates. Clothing and Arts & Crafts have low returns, suggesting strong satisfaction in those categories.
+
+- **Customer Loyalty and Segmentation:** Silver customers (based on RFM segmentation) represent the largest and most valuable group, contributing nearly 48% of total revenue, followed by Gold at 44%, indicating solid loyalty potential in mid-tier segments.
+
+- **Customer Satisfaction and Retention Indicators:** Despite a moderate average satisfaction score (5.4/10), customers still exhibit consistent spending behavior. This suggests potential to boost retention through improved product experience and loyalty incentives.
+
+- **Gender and Education Insights:** Female customers drive slightly higher revenue than males, while those with Bachelor’s and High School education make up over two-thirds of total revenue.
+
+### Strategic Recommendations
+
+- **Enhance Customer Loyalty Programs:** Focus on Silver customers with personalized loyalty incentives and upgrade opportunities to Gold status. These mid-tier buyers are most responsive and profitable.
+
+- **Refine Target Marketing Strategies:** Prioritize marketing toward ages 25–44 and high-to-middle income earners, emphasizing personalized offers across desktop and online channels where spending is strongest.
+
+- **Utilize Discount Psychology:** Implement moderate discount campaigns that reward planned and wants-based buyers without excessive markdowns, appealing to “somewhat sensitive” customers who spend more overall.
+
+- **Improve Retention via Satisfaction Feedback:** Use post-purchase surveys and follow-ups in high-return categories (like jewelry and electronics) to identify quality gaps and strengthen customer satisfaction to prevent churn.
+
+- **Boost Engagement Through Social Media Personalization:** Maintain high visibility for socially engaged buyers, but also re-engage low-influence segments with educational and product-value content that encourages exploration and repeat purchases.
+
+- **Optimize Product Offerings by Profitability & Returns:** Promote Toys, Games, and Packages with high revenue while reassessing marketing for low-performing categories. Reduce return rates by improving product detail accuracy and visuals online.
+
+- **Encourage Research and Consideration:** Since slow decision-makers spend more, create interactive buying guides and product comparison tools to engage users longer before purchase, which fosters confidence and higher-value conversions.
