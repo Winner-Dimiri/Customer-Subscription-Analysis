@@ -23,40 +23,52 @@
 
 - **Project Title:** E-Commerce Customer Behaviour Analysis.
 
-- **Project Description:** This project focuses on leveraging customer subscription data to uncover actionable insights into customer behavior, subscription lifecycles, and revenue performance. The analysis aims to highlight key customer segments, cancellation patterns, and revenue drivers. The final deliverable is a Power BI dashboard with insights that enable stakeholders to monitor subscription trends, understand churn behavior, and make data-driven decisions to improve customer retention and revenue growth.
+- **Project Description:** This project focuses on transforming raw e-commerce customer data into actionable insights using Power BI, SQL, and Excel. The goal was to analyze customer purchasing behavior, loyalty, and satisfaction to uncover trends that drive sales growth, customer retention, and marketing optimization.
 
-- **Business Task:** To analyze customer subscription data to identify trends, patterns, and anomalies in cancellations, renewals, and revenue, enabling the business to design targeted strategies for customer retention and revenue optimization.
+Using interactive visualizations and data modeling techniques, the project segments customers based on purchase frequency and spending patterns. It identifies the factors influencing buying decisions such as discount sensitivity, social media influence, and engagement with ads, to help businesses make data-driven decisions.
+
+The result is a dynamic Power BI dashboard that provides a complete view of customer behavior, enabling stakeholders to improve targeting, personalize campaigns, and enhance customer lifetime value.
+
+- **Business Task:** To analyze customer behavior patterns and identify opportunities to:
+  1. Increase customer retention and loyalty program participation.
+  2. Optimize marketing strategies based on behavioral insights.
+  3. Improve sales forecasting and campaign targeting.
+  4. Understand key drivers of purchase intent, discount sensitivity, and customer satisfaction.
 
 - **Objectives:** The objectives of this project are:
-  1. **Customer Segmentation:** Identify customer groups by region, subscription type, and cancellation behavior.
+  1. Quantify revenue drivers: which categories, devices and channels produce the most revenue.
+  2. Identify high-value customers and recommend retention/upsell strategies.
+  3. Segment customers by behaviour.
+  4. Evaluate marketing/channel effectiveness (social influence, ad engagement, discount sensitivity).
+  5. Identify friction areas: high return rates, long time-to-decision, low satisfaction.
+  6. Provide prioritized, data-driven recommendations for marketing and product teams.
 
-  2. **Churn Analysis:** Track subscription cancellations and end dates to understand churn patterns.
+**Business Questions**
+  1. What customer demographics and behavioral patterns drive the highest sales and loyalty?
+  2. How do purchase frequency, product category, and purchase channel influence total revenue?
+  3. What impact do discounts, social media, and ad engagement have on customer spending and retention?
+  4. How do product ratings, return rates, and satisfaction levels affect repeat purchases?
+  5. Which customer segments and marketing strategies offer the greatest potential for business growth?
 
-  3. **Revenue Trends:** Monitor revenue contributions by region, subscription type, and customer segment.
-
-  4. **Subscription Lifecycle Insights:** Track start and end dates to analyze subscription duration and renewal patterns.
-
-  5. **Interactive Reporting:** Build a Power BI dashboard with slicers and filters for real-time, drill-down analysis.
-	
 	
  ### Dataset Summary
 
-- **Dataset Structure:** The dataset contains the following data fields, as described below:
+- **Key Features**:
+  1. **Customer Demographics:** age, income, gender, and education level for better segmentation and targeted marketing.
+  2. **Purchase Behavior:** Includes purchase amount, frequency, category, and channel preferences to assess spending patterns.
+  3. **Customer Loyalty:** Features like brand loyalty, engagement with ads, and loyalty program membership provide insights into long-term customer retention.
+  4. **Product Feedback:** Customer ratings and satisfaction levels for analysis of product quality and customer sentiment.
+  5. **Decision-Making:** Time spent on product research, time to decision, and purchase intent reflecting how customers make purchasing decisions.
+  6. **Influences on Purchase:** Factors such as social media influen.ce, discount sensitivity, and return rates are included to analyze how external factors affect purchasing behavior.
 
-	| Column               | Description                                                              |
-	|----------------------|--------------------------------------------------------------------------| 
-	| CustomerID           | Unique identifier for each Customer                                      |
-	| CustomerName         | Name of each customer                                                    |
-	| Region               | Geographical location of each customer                                   | 
-	| SubscriptionType     | Type of subscription a customer enrolled                                 |
-	| SubscriptionStart    | The date when a customer’s subscription began                            |
- 	| SubscriptionEnd      | The date when a customer’s subscription ended                            |
-	| Canceled             | Indicates whether the subscription was canceled                          |
-  	| Revenue              | Total revenue generated from a customer during their subscription period |
+- **Assumptions and Data Understanding:**
+  1. The dataset is customer-level (1000 unique customers). Columns like Purchase_Amount and Frequency_of_Purchase appear to describe per-customer behaviour (not raw transactions).
 
-The subscription categories include Basic, Standard, Premium while the regions are East, West, North, and South.
+  2. Frequency_of_Purchase = number of purchases per month.
 
-- **Data Source:** the data used for this analysis is the Capstone Project Dataset provided by the Incubator Hub as part of the 2024 Data Analysis Training Program.
+  3. Purchase_Amount = average amount per purchase. I used the common assumption: MonthlyRevenue = Purchase_Amount * Frequency_of_Purchase.
+
+- **Data Source:** Kaggle - Ecommerce Consumer Behavior Analysis Data by Salahuddin Ahmed
 
 ### Tools Used
 
@@ -64,17 +76,50 @@ The subscription categories include Basic, Standard, Premium while the regions a
 - **Structured Query Language (SQL):** for data querying and exploration
 - **Power BI:** for data visualization and dashboard creation.
 
-**Business Questions**
-- Who are our top customers?
-- What categories or channels drive the highest revenue?
-- How do demographics influence purchase behaviour?
-- How does discount usage affect loyalty and returns?
-- Which segments should marketing target for retention or upsell?
-
 ### Data Preparation
-The dataset provides each customer’s average Purchase_Amount and Frequency_of_Purchase (monthly).To calculate total spending per customer, derived metrics, Monthly_Revenue and AnnualRevenue were created:
+1. The dataset provides each customer’s average Purchase_Amount and Frequency_of_Purchase (monthly).To calculate total spending per customer, derived metrics, Monthly_Revenue and AnnualRevenue were created:
 Monthly_Revenue = Purchase_Amount × Frequency_of_Purchase
 Annual_Revenue = Monthly_Revenue × 12
+[You can view the SQL query here]()
+
+2. AgeGroup: the customers were grouped into four age groups: <25, 25-34, 35-44, >44, for ease of analysis and proper segmentation.
+   [View the SQL query here]()
+
+IncomeBucket (map Income_Level to buckets or numeric ranking)
+
+Example mapping: Low=1, Middle=2, High=3 (use to segment spending power)
+
+RFM components & scores
+
+RecencyDays — CURRENT_DATE - Time_of_Purchase (or if Time_of_Purchase is last purchase)
+
+FrequencyMetric — use Frequency_of_Purchase (monthly)
+
+Monetary — MonthlyRevenue or AnnualRevenue
+
+Convert each to a 1–5 score (quintiles) and combine to RFM_Score.
+
+CLV_estimate (simple)
+
+CLV = MonthlyRevenue * avg_customer_lifetime_months * gross_margin
+
+Example: CLV = MonthlyRevenue * 24 * 0.30 (document the lifetime and margin assumptions)
+
+LoyaltyScore (composite)
+
+Weighted sum: 0.4*Brand_Loyalty + 0.3*(Customer_Loyalty_Program_Member?1:0) + 0.3*(Engagement_with_Ads_score)
+
+Normalize to 0–100.
+
+ReturnFlagHigh (boolean)
+
+ReturnFlagHigh = RETURN_RATE > 0.15 (thresholds are business-defined)
+
+TimeToDecisionBucket
+
+bucket time to decision into Fast/Moderate/Slow.
+
+
 
 
 **RFM Adaptation:** The dataset represents one record per customer rather than transaction-level data. Therefore, a traditional RFM (Recency, Frequency, Monetary) model could not be directly applied. To derive similar insights, I implemented an Engagement-Weighted RFM approach, where “Recency” was redefined as engagement recency using ad interaction levels i.e the Engagement_with_Ad column, “Frequency” used the customer’s reported purchase frequency, and “Monetary” reflected their annual revenue. This adaptation is to preserve the RFM analysis while aligning with the dataset’s structure. This approximation allows meaningful revenue-based analyses, such as identifying high-value customers and top-performing product categories.
