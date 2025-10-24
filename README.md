@@ -121,7 +121,7 @@ The dashboards below present the visual analysis and key findings
 
 - **Behavioral Patterns:** Customers with slow decision speed generated the highest revenue with a large revenue gap from those with moderate and fast decision speeds. This suggests that more time spent on researching leads to higher purchase values. Wants-based and need-based intent generate more revenue than planned and impulsive Intent.
 
-- **Seasonality & timing:** Sales are highest in August and during Quarter 3, while February and October record the lowest sales. This suggests that sales and marketing activities should be planned around these peak and low periods.
+- **Seasonal Trends:** Sales are highest in August and during Quarter 3, while February and October record the lowest sales. This suggests that sales and marketing activities should be planned around these peak and low periods.
 
 - **Purchase Channel and Device Trends:** Online, Mixed, and In-Store perform nearly equally, and desktop users spend slightly more than smartphone and tablet users, showing multi-device and channel engagement.
 
