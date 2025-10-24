@@ -9,7 +9,7 @@
 
 [Tools Used](#tools-used)
 
-[Data Cleaning and Preparation](#data-preparation)
+[Data Cleaning and Preparation](#data-cleaning-and-preparation)
 
 [Visualizations](#visualizations)
 
@@ -21,7 +21,7 @@
 
 - **Project Title:** E-Commerce Customer Behaviour Analysis.
 
-- **Project Description:** This project focuses on transforming raw e-commerce customer data into actionable insights using Power BI, SQL, and Excel. The goal is to analyze customer demographics, purchasing behavior, loyalty, and satisfaction to uncover trends that drive sales growth, customer retention, and marketing optimization. The project segments customers based on demographics, purchase frequency and spending patterns. It identifies the factors influencing buying decisions such as discount sensitivity, social media influence, and engagement with ads, to help businesses make data-driven decisions. The result is a dynamic Power BI dashboard that provides a complete view of customer behavior, enabling stakeholders to improve targeting, personalize campaigns, and enhance customer lifetime value.
+- **Project Description:** This project focuses on transforming raw e-commerce customer data into actionable insights using Power BI, SQL, and Excel. The goal is to analyze customer demographics, purchasing behavior, loyalty, and satisfaction to uncover trends that drive sales growth, customer retention, and marketing optimization. The project segments customers based on demographics, purchase frequency and spending patterns. It identifies the factors influencing buying decisions such as discount sensitivity, social media influence, and engagement with ads, to help the business make data-driven decisions. The result is an interactive Power BI dashboard that provides a complete view of customer behavior, with key insights and recommendations, enabling stakeholders to improve targeting, personalize campaigns, and enhance customer lifetime value.
 
 - **Business Task:** To analyze customer behavior patterns and identify opportunities to:
   1. Increase customer retention and loyalty program participation.
@@ -109,7 +109,7 @@ Annual_Revenue = Monthly_Revenue × 12
       [View the SQL query here](https://github.com/Winner-Dimiri/E-commerce-Customer-Behaviour-Analysis-Power-BI-SQL-Excel/blob/main/E-commerceCustomerAnalysis.sql#L126-L135)
 
 ### Visualizations
-Below are the dashboards visualizing the analyses 
+The dashboards below present the visual analysis and key findings
 
 ![Revenue Insights](https://github.com/Winner-Dimiri/E-commerce-Customer-Behaviour-Analysis-Power-BI-SQL-Excel/blob/main/E-commerce%20Revenue%20Insights%20Trends.png)
 
@@ -119,32 +119,35 @@ Below are the dashboards visualizing the analyses
 
 - **Demographics and Revenue Drivers:** Customers aged 25–44 and those with middle to high income levels contribute over 60% of total revenue, showing that mid-career professionals are the most profitable demographic group.
 
-- **Behavioral Patterns:** Customers with slow decision speeds generated the highest revenue. This suggests that more time spent on researching leads to higher purchase values. Those with moderate decision speeds also show strong buying intent.
+- **Behavioral Patterns:** Customers with slow decision speed generated the highest revenue with a large revenue gap from those with moderate and fast decision speeds. This suggests that more time spent on researching leads to higher purchase values. Wants-based and need-based intent generate more revenue than planned and impulsive Intent.
 
-- **Purchase Channel and Device Trends:** Online and mixed channels account for the largest revenue share, and desktop users spend slightly more than smaertphone and tablet shoppers, highlighting the importance of optimizing desktop experiences for high-value transactions.
+- **Seasonality & timing:** Sales are highest in August and during Quarter 3, while February and October record the lowest sales. This suggests that sales and marketing activities should be planned around these peak and low periods.
 
-- **Discount Sensitivity and Influence Factors:** Revenue is nearly evenly split between customers who used discounts and those who didn’t, but “somewhat sensitive” buyers yield higher average spend, suggesting they respond well to balanced promotional strategies. Additionally, high and low social media influence groups surprisingly generate higher revenue, implying that both strong brand presence and organic engagement matter.
+- **Purchase Channel and Device Trends:** Online, Mixed, and In-Store perform nearly equally, and desktop users spend slightly more than smartphone and tablet users, showing multi-device and channel engagement.
+
+- **Discount Sensitivity and Influence Factors:** Revenue is nearly evenly split between customers who used discounts and those who didn’t, but “somewhat sensitive” buyers yield higher average revenue, suggesting they respond well to balanced promotional strategies. Additionally, high and low social media influence groups generate higher revenue, implying that both strong brand presence and organic engagement matter.
 
 - **Product and Category Insights:** Toys & Games and Packages drive the highest revenue, while Jewelry & Electronics have higher return rates. Clothing and Arts & Crafts have low returns, suggesting strong satisfaction in those categories.
 
-- **Customer Loyalty and Segmentation:** Silver customers (based on RFM segmentation) represent the largest and most valuable group, contributing nearly 48% of total revenue, followed by Gold at 44%, indicating solid loyalty potential in mid-tier segments.
+- **Customer Loyalty and Segmentation:** Silver customers (based on RFM segmentation) represent the largest and most valuable group, contributing nearly 48% of total revenue, followed by Gold at 44%, indicating solid loyalty potential in mid-tier segments. Bronze contributes minimally (8.7%).
 
 - **Customer Satisfaction and Retention Indicators:** Despite a moderate average satisfaction score (5.4/10), customers still exhibit consistent spending behavior. This suggests potential to boost retention through improved product experience and loyalty incentives.
 
 - **Gender and Education Insights:** Female customers drive slightly higher revenue than males, while those with Bachelor’s and High School education make up over two-thirds of total revenue.
 
 ### Strategic Recommendations
+- **Enhance Customer Loyalty Programs:** Focus on Silver customers with personalized loyalty incentives and upgrade opportunities to Gold customers. These mid-tier buyers are most responsive and profitable.
 
-- **Enhance Customer Loyalty Programs:** Focus on Silver customers with personalized loyalty incentives and upgrade opportunities to Gold status. These mid-tier buyers are most responsive and profitable.
+- **Time promotions around seasonality:** Focus major promotions and stock planning in In Q2 and Q3 to take advantage of the high sales season. Run special offers or campaigns in February, May, and October to boost sales during these slow months.
 
-- **Refine Target Marketing Strategies:** Prioritize marketing toward ages 25–44 and high-to-middle income earners, emphasizing personalized offers across desktop and online channels where spending is strongest.
+- **Refine Target Marketing Strategies:** Prioritize marketing toward ages 25–44 and high-to-middle income earners. Invest more on desktop users, tablet users, and online channels where spending is strongest.
 
-- **Utilize Discount Psychology:** Implement moderate discount campaigns that reward planned and wants-based buyers without excessive markdowns, appealing to “somewhat sensitive” customers who spend more overall.
+- **Utilize Discount Psychology:** Implement moderate discount campaigns that reward need-based and wants-based buyers without excessive reduction, appealing to “somewhat sensitive” customers who spend more overall, to maximize average revenue without erasing margins.
 
-- **Improve Retention via Satisfaction Feedback:** Use post-purchase surveys and follow-ups in high-return categories (like jewelry and electronics) to identify quality gaps and strengthen customer satisfaction to prevent churn.
+- **Improve Retention via Satisfaction Feedback:** Monitor satisfaction metrics and intervene in categories with return/satisfaction issues; experiment with post-purchase surveys or loyalty rewards to convert satisfied buyers into repeat customers and prevent churn.
 
-- **Boost Engagement Through Social Media Personalization:** Maintain high visibility for socially engaged buyers, but also re-engage low-influence segments with educational and product-value content that encourages exploration and repeat purchases.
+- **Boost Engagement Through Social Media Personalization:** Build social media engagement strategies targeting both high and low-influence groups to maximize reach and retention.
 
-- **Optimize Product Offerings by Profitability & Returns:** Promote Toys, Games, and Packages with high revenue while reassessing marketing for low-performing categories. Reduce return rates by improving product detail accuracy and visuals online.
+- **Optimize Product Offerings by Profitability & Returns:** Promote Toys, Games, and Packages with high revenue while reassessing marketing for low-performing categories. Reduce return rates by implementing quality checks, product info improvements, and other return-reduction measures.
 
-- **Encourage Research and Consideration:** Since slow decision-makers spend more, create interactive buying guides and product comparison tools to engage users longer before purchase, which fosters confidence and higher-value conversions.
+- **Encourage Research and Consideration:** Since slow decision-makers spend more, create interactive buying guides and product comparison tools to engage users longer before purchase, which brings about confidence and higher-value conversions.
