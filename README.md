@@ -74,9 +74,7 @@
 - Aggregated and cleaned missing and inconsistent values for better accuracy.
 
 - **Derived Columns:**
-  1. **Monthly and Annual Revenue:** The dataset provides each customer’s average Purchase_Amount and Frequency_of_Purchase (monthly).To calculate total spending per customer, derived metrics, Monthly_Revenue and AnnualRevenue were created:
-Monthly_Revenue = Purchase_Amount × Frequency_of_Purchase
-Annual_Revenue = Monthly_Revenue × 12
+  1. **Monthly and Annual Revenue:** The dataset provides each customer’s average Purchase_Amount and Frequency_of_Purchase (monthly). To calculate total spending per customer, derived metrics, Monthly_Revenue and AnnualRevenue were created.
 
      [You can view the SQL query here](https://github.com/Winner-Dimiri/E-commerce-Customer-Behaviour-Analysis-Power-BI-SQL-Excel/blob/main/E-commerceCustomerAnalysis.sql#L1-L13)
 
